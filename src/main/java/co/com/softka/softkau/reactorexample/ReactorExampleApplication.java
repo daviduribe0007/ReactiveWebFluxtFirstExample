@@ -1,6 +1,7 @@
 package co.com.softka.softkau.reactorexample;
 
 import co.com.softka.softkau.reactorexample.model.Person;
+import co.com.softka.softkau.reactorexample.operators.Creation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -80,6 +81,9 @@ public class ReactorExampleApplication implements CommandLineRunner {
         mono();
         flux();
         fluxToMono();
+        Creation creation = new Creation();
+        creation.range(5,3);
+        creation.repeat(2 );
     }
 
 }
