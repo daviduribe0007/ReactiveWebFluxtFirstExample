@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import reactor.core.publisher.Mono;
 import io.reactivex.Observable;
 
+
 @SpringBootApplication
 public class ReactorExampleApplication implements CommandLineRunner {
 
@@ -20,18 +21,28 @@ public class ReactorExampleApplication implements CommandLineRunner {
 
     public void reactor() {
         Mono.just(new Person(1, "David", 28))
+                .doOnNext(p -> {
+                    log.info("[Rezactor] person: " + p);
+                    p.setName(p.getName().toLowerCase());
+                })
                 .subscribe(p -> log.info("[Rezactor] person: " + p));
 
     }
 
     public void rxJava2() {
         Observable.just(new Person(2, "Mariela", 73))
+
+                .doOnNext(p -> {
+                    log.info("[RxJava2] person: " + p);
+                    p.setName(p.getName().toUpperCase());
+                })
                 .subscribe(p -> log.info("[RxJava2] person: " + p));
     }
-        @Override
-        public void run (String...args) throws Exception {
-            reactor();
-            rxJava2();
 
-        }
+    @Override
+    public void run(String... args) throws Exception {
+        reactor();
+        rxJava2();
+
     }
+}
