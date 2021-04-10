@@ -6,8 +6,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import io.reactivex.Observable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @SpringBootApplication
@@ -39,10 +43,44 @@ public class ReactorExampleApplication implements CommandLineRunner {
                 .subscribe(p -> log.info("[RxJava2] person: " + p));
     }
 
+    public void mono() {
+        Mono.just(new Person(3, "Maria", 48))
+                .subscribe(p -> log.info("Mono : " + p.toString()));
+    }
+
+    public void flux() {
+        List<Person> personList = new ArrayList<>();
+        personList.add(new Person(4, "Ruben", 58));
+        personList.add(new Person(5, "Robin", 38));
+        personList.add(new Person(6, "David ", 28));
+
+        Flux.fromIterable(personList)
+                .subscribe(p -> log.info("FLux : "+ p.toString()));
+
+    }
+
+    public void fluxToMono(){
+        List<Person> personList = new ArrayList<>();
+        personList.add(new Person(7, "Migel", 56));
+        personList.add(new Person(8, "Camilo", 24));
+        personList.add(new Person(9, "Pipe ", 22));
+
+        Flux<Person> personFlux = Flux.fromIterable(personList);
+        personFlux.collectList()
+                .subscribe(list -> log.info(list.toString()));
+
+    }
+
+
+
     @Override
     public void run(String... args) throws Exception {
         reactor();
         rxJava2();
-
+        mono();
+        flux();
+        fluxToMono();
     }
+
 }
+
