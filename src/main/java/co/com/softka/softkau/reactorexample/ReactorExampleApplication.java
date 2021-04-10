@@ -2,6 +2,7 @@ package co.com.softka.softkau.reactorexample;
 
 import co.com.softka.softkau.reactorexample.model.Person;
 import co.com.softka.softkau.reactorexample.operators.Creation;
+import co.com.softka.softkau.reactorexample.operators.Transformation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -84,6 +85,11 @@ public class ReactorExampleApplication implements CommandLineRunner {
         Creation creation = new Creation();
         creation.range(5,3);
         creation.repeat(2 );
+        Transformation transformation = new Transformation();
+        transformation.map();
+        transformation.mapRange(10,5  );
+        transformation.flatMap();
+        transformation.groupBy();
     }
 
 }
