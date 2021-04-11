@@ -1,16 +1,14 @@
 package co.com.softka.softkau.reactorexample;
 
 import co.com.softka.softkau.reactorexample.model.Person;
-import co.com.softka.softkau.reactorexample.operators.Combination;
-import co.com.softka.softkau.reactorexample.operators.Creation;
+import co.com.softka.softkau.reactorexample.operators.*;
 import co.com.softka.softkau.reactorexample.operators.Error;
-import co.com.softka.softkau.reactorexample.operators.Filtered;
-import co.com.softka.softkau.reactorexample.operators.Transformation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Conditional;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import io.reactivex.Observable;
@@ -111,6 +109,10 @@ public class ReactorExampleApplication implements CommandLineRunner {
         error.errorReturn();
         error.errorResume();
         error.errorMap();
+        Condition condition = new Condition();
+        condition.defaultIfEmpty();
+        condition.takeUntil("maria");
+        condition.timeOut();
     }
 
 }
