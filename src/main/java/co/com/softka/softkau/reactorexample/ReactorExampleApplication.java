@@ -1,6 +1,7 @@
 package co.com.softka.softkau.reactorexample;
 
 import co.com.softka.softkau.reactorexample.model.Person;
+import co.com.softka.softkau.reactorexample.operators.Combination;
 import co.com.softka.softkau.reactorexample.operators.Creation;
 import co.com.softka.softkau.reactorexample.operators.Filtered;
 import co.com.softka.softkau.reactorexample.operators.Transformation;
@@ -97,7 +98,11 @@ public class ReactorExampleApplication implements CommandLineRunner {
         filtered.take(3);
         filtered.takeLast(2);
         filtered.skip(4);
-        filtered.skip(3);
+        filtered.skipLast(3);
+        Combination combination = new Combination();
+        combination.merge();
+        combination.zip();
+        combination.zipWith();
     }
 
 }
