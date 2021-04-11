@@ -78,7 +78,7 @@ public class ReactorExampleApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-       /* reactor();
+        reactor();
         rxJava2();
         mono();
         flux();
@@ -102,8 +102,6 @@ public class ReactorExampleApplication implements CommandLineRunner {
         combination.merge();
         combination.zip();
         combination.zipWith();
-
-
         Error error = new Error();
         error.retry(2);
         error.errorReturn();
@@ -113,7 +111,6 @@ public class ReactorExampleApplication implements CommandLineRunner {
         condition.defaultIfEmpty();
         condition.takeUntil("maria");
         condition.timeOut();
-        */
         Match match = new Match();
         match.average();
         match.count();
