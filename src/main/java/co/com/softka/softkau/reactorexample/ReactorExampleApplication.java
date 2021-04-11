@@ -2,6 +2,7 @@ package co.com.softka.softkau.reactorexample;
 
 import co.com.softka.softkau.reactorexample.model.Person;
 import co.com.softka.softkau.reactorexample.operators.Creation;
+import co.com.softka.softkau.reactorexample.operators.Filtered;
 import co.com.softka.softkau.reactorexample.operators.Transformation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -90,6 +91,13 @@ public class ReactorExampleApplication implements CommandLineRunner {
         transformation.mapRange(10,5  );
         transformation.flatMap();
         transformation.groupBy();
+        Filtered filtered = new Filtered();
+        filtered.filter();
+        filtered.distinct();
+        filtered.take(3);
+        filtered.takeLast(2);
+        filtered.skip(4);
+        filtered.skip(3);
     }
 
 }
