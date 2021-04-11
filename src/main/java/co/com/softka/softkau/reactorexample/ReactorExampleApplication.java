@@ -3,6 +3,7 @@ package co.com.softka.softkau.reactorexample;
 import co.com.softka.softkau.reactorexample.model.Person;
 import co.com.softka.softkau.reactorexample.operators.Combination;
 import co.com.softka.softkau.reactorexample.operators.Creation;
+import co.com.softka.softkau.reactorexample.operators.Error;
 import co.com.softka.softkau.reactorexample.operators.Filtered;
 import co.com.softka.softkau.reactorexample.operators.Transformation;
 import org.slf4j.Logger;
@@ -79,7 +80,7 @@ public class ReactorExampleApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        reactor();
+       /* reactor();
         rxJava2();
         mono();
         flux();
@@ -103,6 +104,13 @@ public class ReactorExampleApplication implements CommandLineRunner {
         combination.merge();
         combination.zip();
         combination.zipWith();
+        */
+
+        Error error = new Error();
+        error.retry(2);
+        error.errorReturn();
+        error.errorResume();
+        error.errorMap();
     }
 
 }
